@@ -1,17 +1,7 @@
+import 'package:expense_tracker_app/utils/category_enum.dart';
 import 'package:uuid/uuid.dart';
 
 const uuid = Uuid();
-
-enum Category {
-  fixedExpenses,
-  food,
-  house,
-  health,
-  stream,
-  leisure,
-  personalExpenses,
-  extras,
-}
 
 class Expense {
   final String id;

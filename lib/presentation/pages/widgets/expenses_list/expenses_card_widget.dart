@@ -1,4 +1,6 @@
 import 'package:expense_tracker_app/models/expense.dart';
+import 'package:expense_tracker_app/utils/category_enum.dart';
+import 'package:expense_tracker_app/utils/date_time_extensions.dart';
 import 'package:flutter/material.dart';
 
 class ExpenseCardWidget extends StatelessWidget {
@@ -27,11 +29,11 @@ class ExpenseCardWidget extends StatelessWidget {
                 const Spacer(),
                 Row(
                   children: [
-                    const Icon(Icons.abc),
+                    Icon(expense.category.icon),
                     const SizedBox(
                       width: 8,
                     ),
-                    Text(expense.date.toString())
+                    Text(expense.date.formatDate())
                   ],
                 ),
               ],

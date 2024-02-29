@@ -1,5 +1,7 @@
 import 'package:expense_tracker_app/models/expense.dart';
 import 'package:expense_tracker_app/presentation/pages/widgets/expenses_list/expenses_list_widget.dart';
+import 'package:expense_tracker_app/presentation/pages/widgets/new_expense/new_expense_page.dart';
+import 'package:expense_tracker_app/utils/category_enum.dart';
 import 'package:flutter/material.dart';
 
 class ExpensesPage extends StatefulWidget {
@@ -26,18 +28,34 @@ class _ExpensesPageState extends State<ExpensesPage> {
     Expense(title: "test8", amount: 28.90, category: Category.stream, date: DateTime.now()),
   ];
 
+  void _openExpenseOverlay() {
+    showModalBottomSheet(
+      context: context,
+      builder: (ctx) => const NewExpensePage(),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: Column(
-      children: [
-        const Text('chart'),
-        Expanded(
-          child: ExpensesListWidget(
-            expensesList: _registeredExpenses,
-          ),
+        appBar: AppBar(
+          title: const Text('Expenses Tracker'),
+          actions: [
+            IconButton(
+              onPressed: _openExpenseOverlay,
+              icon: const Icon(Icons.add),
+            ),
+          ],
         ),
-      ],
-    ));
+        body: Column(
+          children: [
+            const Text('chart'),
+            Expanded(
+              child: ExpensesListWidget(
+                expensesList: _registeredExpenses,
+              ),
+            ),
+          ],
+        ));
   }
 }
